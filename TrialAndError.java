@@ -1,45 +1,49 @@
 import java.util.Scanner;
-   
-class CariArray {
-  public static void main(String args[]){
-            
-    Scanner input = new Scanner(System.in);
-       
-    System.out.println("##  Program Java Pencarian Array  ##");
-    System.out.println("========================================");
-    System.out.println();
-     
-    int[] arr = new int[100];
-    int arr_count, i, num;
-     
-    System.out.print("Input jumlah element Array: ");
-    arr_count = input.nextInt();
-     
-    System.out.print("Input "+arr_count+" angka (dipisah dengan enter): ");
-    System.out.println();
-     
-    // simpan setiap angka yang diinput ke dalam array
-    for(i = 0; i < arr_count; i++){
-      arr[i] = input.nextInt();
+
+public class TrialAndError {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input jumlah elemen array
+        System.out.print("Masukkan jumlah elemen array: ");
+        int jumlahElemen = scanner.nextInt();
+
+        // Inisialisasi array
+        int[] array = new int[jumlahElemen];
+
+        // Input nilai-nilai array
+        for (int i = 0; i < jumlahElemen; i++) {
+            System.out.print("Masukkan nilai elemen ke-" + (i + 1) + ": ");
+            array[i] = scanner.nextInt();
+        }
+
+        // Hitung nilai tertinggi, nilai terendah, dan nilai rata-rata
+        int nilaiTertinggi = array[0];
+        int nilaiTerendah = array[0];
+        int total = array[0];
+
+        for (int i = 1; i < jumlahElemen; i++) {
+            if (array[i] > nilaiTertinggi) {
+                nilaiTertinggi = array[i];
+            }
+
+            if (array[i] < nilaiTerendah) {
+                nilaiTerendah = array[i];
+            }
+
+            total += array[i];
+        }
+
+        // Hitung nilai rata-rata
+        double rataRata = (double) total / jumlahElemen;
+
+        // Output hasil
+        System.out.println("\nHasil:");
+        System.out.println("Nilai Tertinggi: " + nilaiTertinggi);
+        System.out.println("Nilai Terendah: " + nilaiTerendah);
+        System.out.println("Nilai Rata-rata: " + rataRata);
+
+        scanner.close();
     }
-     
-    System.out.println();
-     
-    System.out.print("Input angka yang akan dicari: ");
-    num = input.nextInt();
-     
-    // proses pencarian array
-    for(i = 0; i < arr_count; i++){
-      if(arr[i] == num){
-        System.out.print("Angka ditemukan pada index ke-"+i);
-        break;
-      }
-    }
-     
-    if(i == arr_count){
-      System.out.print("Angka tidak ditemukan");
-    }
- 
-    System.out.println();
-  }
 }
